@@ -1,4 +1,4 @@
-# YARSK
+# YARSK [![Build Status](https://travis-ci.org/Kemoke/team_quiz.svg?branch=master)](https://travis-ci.org/Kemoke/team_quiz)
 
 **Y**et **A**nother **R**eact **S**tarter **K**it.
 
