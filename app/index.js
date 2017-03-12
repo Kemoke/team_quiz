@@ -1,14 +1,19 @@
-// IMPORTANT: This needs to be first (before any other components)
-// to get around CSS order randomness in webpack.
-import './css/base';
-
-// Some ES6+ features require the babel polyfill
-// More info here: https://babeljs.io/docs/usage/polyfill/
-// Uncomment the following line to enable the polyfill
-// require("babel/polyfill");
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Application from './components/Application';
+import Main from './views/main';
+import Backend from './views/backend'
+import Categories from './views/backend/categories'
+import Questions from './views/backend/question'
+import {Router, Route, IndexRoute, browserHistory} from 'react-router'
 
-ReactDOM.render(<Application />, document.getElementById('app'));
+ReactDOM.render((
+    <Router history={browserHistory}>
+        <Route path='/'>
+            <IndexRoute component={Main}/>
+            <Route path='backend' component={Backend}>
+                <Route path='category' component={Categories}/>
+                <Route path='question' component={Questions}/>
+            </Route>
+        </Route>
+    </Router>
+), document.getElementById('app'));
