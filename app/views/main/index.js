@@ -17,43 +17,8 @@ export default class Main extends React.Component {
 
     constructor() {
         super();
-        let questions = [];
-        for (let i = 0; i < 20; i++) {
-            questions.push({
-                id: i,
-                text: 'question' + i,
-                used: 0,
-                answers: [
-                    {
-                        id: 0,
-                        text: 'answer1',
-                        correct: 1,
-                        question_id: 0
-                    },
-                    {
-                        id: 1,
-                        text: 'answer2',
-                        correct: 0,
-                        question_id: 0
-                    },
-                    {
-                        id: 2,
-                        text: 'answer3',
-                        correct: 0,
-                        question_id: 0
-                    },
-                    {
-                        id: 3,
-                        text: 'answer4',
-                        correct: 0,
-                        question_id: 0
-                    }
-                ],
-            });
-        }
         this.state = {
             categories: [],
-            questions: questions,
             quizState: {
                 round: 0,
                 teams: [],
@@ -73,7 +38,7 @@ export default class Main extends React.Component {
         this.timerID = 0;
         this.bindFunctions = this.bindFunctions.bind(this);
         this.bindFunctions();
-        $.get('http://localhost/?table=categories', this.onLoad);
+        $.get('http://localhost/?table=quiz', this.onLoad);
         $.get('http://localhost/?table=teams', this.onLoadTeams);
     }
 
@@ -94,7 +59,7 @@ export default class Main extends React.Component {
         this.getTeams = this.getTeams.bind(this);
     }
 
-    onLoadTeams(data){
+    onLoadTeams(data) {
         let quizState = this.state.quizState;
         data = data.map(team => {
             team.score = 0;
@@ -153,7 +118,7 @@ export default class Main extends React.Component {
                 break;
             case 13:
                 console.log("bee");
-                if(this.newState !== null)
+                if (this.newState !== null)
                     this.setState(this.newState);
         }
     }
@@ -163,6 +128,7 @@ export default class Main extends React.Component {
             data.used = 0;
             return data;
         });
+        data.splice(data.length-1, 1);
         this.setState({
             categories: data
         });
@@ -198,7 +164,7 @@ export default class Main extends React.Component {
     }
 
     onAnswer(answer, num) {
-        if(this.state.answer !== -1)
+        if (this.state.answer !== -1)
             return;
         this.stopTimer();
         this.setState({
@@ -208,8 +174,8 @@ export default class Main extends React.Component {
             let quizState = this.state.quizState;
             const round = quizState.round;
             if (answer.correct === 1) {
-                this.appendHistory('answer', (round % 6)-1);
-                quizState.teams[(round % 6)-1].score++;
+                this.appendHistory('answer', (round % 6) - 1);
+                quizState.teams[(round % 6) - 1].score++;
                 this.onCorrect();
             } else {
                 this.appendHistory('answer', null);
@@ -243,14 +209,14 @@ export default class Main extends React.Component {
 
     }
 
-    getTeams(){
+    getTeams() {
         let teams = [];
         let stateTeams = this.state.quizState.teams;
         stateTeams.sort((team1, team2) => {
             return team2.score - team1.score;
         });
-        for (let i = 0; i < stateTeams.length; i++){
-            if(teams.length < 2){
+        for (let i = 0; i < stateTeams.length; i++) {
+            if (teams.length < 2) {
                 teams.push(stateTeams[i]);
             } else {
                 if (teams[1].score > stateTeams[i].score) {
@@ -269,7 +235,7 @@ export default class Main extends React.Component {
         quizState.round++;
         if (quizState.round % 12 === 0)
             quizState.currentCategory = null;
-        if(quizState.round / 12 >= 5) {
+        if (quizState.round / 12 >= 5) {
             quizState.teams = this.getTeams();
             this.newState = this.state;
             this.newState.quizState = quizState;
@@ -302,7 +268,7 @@ export default class Main extends React.Component {
         if (undoStep.type !== 'answer') {
             undoStep.object.used = 0;
         } else {
-            if(undoStep.object !== null)
+            if (undoStep.object !== null)
                 quizState.teams[undoStep.object].score--;
         }
         if (this.state.quizState.timerActive && !quizState.timerActive) {
@@ -337,7 +303,7 @@ export default class Main extends React.Component {
                         })}
                     </ul>
                     <ul className={this.state.quizState.currentCategory === null ? style.questions : s([style.questions, style.open])}>
-                        {this.state.questions.map(question => {
+                        {this.state.quizState.currentCategory !== null ? this.state.quizState.currentCategory.questions.map(question => {
                             return (
                                 <li
                                     key={question.id}
@@ -358,7 +324,7 @@ export default class Main extends React.Component {
                                     }}
                                 >{i++}</a></li>
                             )
-                        })}
+                        }) : ''}
                     </ul>
                 </div>
                 <div className={
@@ -366,7 +332,11 @@ export default class Main extends React.Component {
                         style.maintop :
                         s([style.maintop, style.active])
                 }>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, repellendus.</p>
+                    <p>
+                        {this.state.quizState.currentQuestion !== null ?
+                            this.state.quizState.currentQuestion.text : ''
+                        }
+                    </p>
                 </div>
                 <div className={
                     this.state.quizState.currentQuestion === null ?
@@ -400,8 +370,10 @@ export default class Main extends React.Component {
                 <div className={s([style.sidebar, style.teams])}>
                     <ul>
                         {this.state.quizState.teams.map(team => {
-                            return(
-                                <li key={team.id} className={this.state.quizState.round % 6  === teamNo++ ? style.active : ''}><a>{team.name}</a><span className={style.score}>{team.score}</span></li>
+                            return (
+                                <li key={team.id}
+                                    className={this.state.quizState.round % 6 === teamNo++ ? style.active : ''}>
+                                    <a>{team.name}</a><span className={style.score}>{team.score}</span></li>
                             )
                         })}
                     </ul>

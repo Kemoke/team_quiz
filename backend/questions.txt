@@ -1,4 +1,104 @@
 39
+?Which instution created the first written rules of modern football?
+Oxford University
+*Cambridge University
+Manchester University
+Nottingham University
+?Muhammed ali,how many games did he lose during his career?
+-2
+-4
+*-5
+-7
+?Who took the first goal of bosnia and hercegovnia's world cup?
+Edin Dzeko
+*Vedad Ibisevic
+Miralem Pjanic
+Senijad Ibricic
+?When was the olympic flag first used?
+1908
+1912
+*1920
+1924
+?Which one of the following teams zlatan ibrahimovic didnt play?
+*Goteborg
+Ajax
+Juventus
+Malmo
+?How many times did roger federer, the champion in tennis history ,have won french open?
+5
+0
+8
+*1
+?What is the best grade of naim sÜleymanoglu's clean&jerk?
+180
+185
+*190
+195
+?Which of the following nba players didnt pass the 27.000 number barrier?
+*Tim Duncan
+Dirk Nowitzki
+Lebron James
+Wilt Chamberlain
+?Who is the footballer who scored the most goals in the wolrld cup history?
+Ronaldo
+Gerd Muller
+*Miroslav Klose
+Pele
+?What year did heysel facilities happen which led to the death of 39 people,and which caused liverpool to be held for 6 years at international competitions?
+1972
+1975
+1982
+*1985
+?Which of the following martial arts does not belong to the far east?
+Judo
+*Jieishudan
+Ninjutsu
+Hapkido
+?How many people are forming a team in the curling team?
+3
+*4
+5
+6
+?Which of the following countries produces the majority of football balls?
+Indonesia
+Germany
+Britain
+*Pakistan
+?Which of the following countries has a won a gold medal in the 2016 rio olimpiic games?
+*Singapore
+Malaysia
+Israel
+Austria
+?How long is the length of the marathon run?
+40.000 M
+42000 M
+*42,195 M
+42.295 m
+?2010 World basketball championship turkey-serbia who is the turkish player who scored the least seconds basketball in the semifinal competition?
+Semih Erden
+Hidayet TÜrkoglu
+Emir Preldzic
+*Kerem Tunceri
+?Which one of the following sports branches is related to kadet term?
+Kano
+*Sailing
+Rafting
+Box
+?Which of the following 1 racers have been cahmpion 5 times over?
+*Michael Schumaer
+Levis Hamilton
+Sebastian Vettel
+Fernando Alonso
+?Which of the following countries have most participated in the world cup?
+Portugal
+Ghana
+Australia
+*Cameroon
+?Which of the following teams didnt match each other as a team of the same country in the final of the champions league?
+Manchester United - Chelsea
+Juventus - Milan
+*Real Madrid - Barcelona
+Real Madrid - Valencia
 40
 ?Valletta is the capital city of which country?
 Monaco
@@ -101,9 +201,229 @@ Hudson Bay Gulf
 *Gulf of Mexico
 Gulf of Guinea
 41
+?What was the treaty that ended WWI that laid some of the unrest that would later explode into WWII?
+Geneva conference
+*Treaty of Versailles
+Paris peace accords
+Treaty of Brest-Litovsk
+?Stalin became the dictator of Soviet Union in which year ?
+1920
+*1922
+1923
+1927
+?Last Ottoman siege of Vienna was in which decades
+1650s
+1660s
+*1680s
+1690s
+?Identify the major trade network between Asia and Europe
+Trans-Saharan caravans
+*The Silk road
+Indian Ocean sea-lanes
+Mediterranean sea-lanes
+?Kevlar is a lightweight material, 5 times stronger than stee?It was invented by:
+*Stephanie Kwolek
+Lilian Gilberth
+Elizabeth Magie
+Nikola Tesla
+?The largest military invasion in history was?
+Operation SeaLion
+Operation Barbarossa
+*Operation Overlord
+Operation Husky
+?Muslim who led Bosnia, died in 2003, his name was?
+Haris Silajdzic
+*Alija Izetbegovic
+Mehmed Spaho
+Dzemaludin Causevic
+?What was the name of document that caused establishment of „United States of America“
+Referendum for independence
+Independence certificate
+*Declaration of independence
+American establishment document
+?When did Indonesia get it's independence from Netherland?
+1943
+*1945
+1949
+1952
+?The Ottoman empire conquered Konstantinopolis in which year?
+1451
+*1453
+1456
+1459
+?Which nickname was „Desert fox“
+*Erwin Rommel
+Halid ibn Velid
+George Patton
+Hermann Goering
+?NATO was formed in which year?
+1941
+*1949
+1951
+1954
+?The first succesful printing press was developed by this man?
+*Johaness Gutenburg
+Benjamin Franklin
+Sir Isaac Newton
+Martin Luther
+?Which country helped Germany invade Poland?
+Romania
+*Soviet Union
+Italy
+Austria
+?How many concentration camps did Nazi Germany operate in occupied Poland during
+120
+152
+385
+*457
+?The wars between the Romans and Carthaginians were called:
+The Judean wars
+The Sassanid wars
+*The Punic wars
+The Peleponesian wars
+?Which was the first dynasty in Islamic state (khalifat)
+*Ummayad
+Fatimid
+Abbasid
+Ottoman
+?How old was Mehmed Fatih when he conquered Bosnia
+17
+21
+24
+*31
+?The disease that ravaged and killed a third of Europe's population in 14's century is known as
+The white death
+*The black plague
+Smallpox
+The bubonic plague
 42
 43
 44
+?In computing, what is RAM short for?
+Read Accessibility Memory
+*Random Access Memory
+Remote Access Machine
+Rechargeable Alkaline Memory
+?In which year was Google launched on the web?
+1984
+1990
+*1998
+2001
+?What is the chemical formula for Table Salt?
+TaSa
+TbSt
+*NaCl
+NaHCO3
+?Most popular Bosnian meal is?
+Pizza
+*Ćevapi
+Sushi
+Hamburger
+?What kind of animal is the largest living creature on Earth?
+*Whale
+Elephant
+Giraffe
+Hippopotamus
+?What is the name of the German airline?
+Deutchelinie
+*Lufthansa
+Air-German
+Deutche-Boeing
+?What used to be the currency of Italy?
+*Lira
+Marka
+Euro
+Rupee
+?What is Einstein's famous equation of special relativity?
+F=ma
+*E=mc^2
+F=γ*m*M/r^2
+e^(i*pi)=-1
+?What does the term 'piano' mean?
+Agresively
+Hardly
+*Softly
+Very quietly
+?What was the name of the first manned lunar landing mission in 1969?
+*Apollo
+Curiosity
+Spirit
+Landrover
+?What is the sleepiest creature in the world, sleeping around 22 hours each day?
+Bear
+*Koala
+Human baby
+Cat
+?What ingredient in bread causes it to rise?
+Flour
+Salt
+*Yeast
+Water
+?What is the second most abundant element in the earth's atmosphere?
+Carbon-dioxide
+Dihydrogen-monoxide
+*Oxygen
+Nitrogen
+?What is the largest 3-digit prime number?
+999
+*997
+991
+989
+?What vitamin is produced when a person is exposed to sunlight?
+Vitamin A
+Vitamin B
+Vitamin C
+*Vitamin D
+?Planet with highest number of Moons in Solar system is?
+Neptune
+Uranus
+Saturn
+*Jupiter
+?Speed of Light is about?
+900.000 km/s
+*300.000 km/s
+100.000 km/s
+50.000 km/s
+?Penicillin is used to fight what type of infections?
+*Bacteria
+Virus
+Fungus
+All of them
+?Pb is chemical symbol for which element?
+Copper
+Tungsten
+*Lead
+Antimony
+?Diamonds are made up almost entirely of what element?
+Gold
+Silver
+*Carbon
+Silicon
+?In what year was the iPhone first released?
+*2007
+2008
+2009
+2010
+?Who invented telephone?
+Albert Einstein
+*Graham Bell
+Nikola Tesla
+Thomas Edison
+?Which is not Swiss' official language?
+Italian
+*English
+German
+French
+?What does N stands for in NATO?
+National
+*North
+Nautical
+Natural
+?How many departments are at IUS?
+15
+18
+*21
+24
 45
 ?The world's biggest cave is called Son Doong. It is located in:
 Indonesia
@@ -130,3 +450,103 @@ Tyrrhenian Sea
 Mediterranean Sea
 Adriatic Sea
 *Aegean Sea
+?What was the number of republics that made up Soviet Union in that time?
+12
+*15
+16
+17
+?The youngest muslim comandeer was? He was 19 years old
+Hamza r.a
+Halid ibn Velid r.a
+*Usama ibn Zeid r.a
+Saad ibn Vekkas r.a
+?Fifth muslim khalif was?
+*Hasan ibn Ali
+Muavia ibn Ebi Sufjan
+Omer ibn Abdul-Aziz
+Ebu Bekr es Siddik
+?Which Roman emperor built a massive wall across Northern Britain in 122 ?D ?
+Marcus Aeurelius
+*Hadrian
+Nero
+Augustus
+?In what year the last Japanese soldier surrender?
+1945
+1946
+1948
+*1974
+?What is the melting point of ice in Fahrenheit?
+-100°F
+0°F
+*32°F
+273°F
+?What does the acronym "NASA" stand for?
+Nautical Aerodynamics and Space Advancement
+*National Aeronautics and Space Administration
+Natural Aeronautics and Space Advancement
+National Aeronautics and Space Advancement
+?How long is an eon?
+1.000 years
+1.000.000 years
+*1.000.000.000 years
+1.000.000.000.000 years
+?The filament in an incandescent light bulb is made of what element?
+Iron
+*Tungsten
+Platinum
+Aluminium
+?What blood type do you need to be a universal donor?
+*O-
+O+
+AB-
+AB+
+?How many times has the world cup disappeared?
+1
+*2
+3
+4
+?Which of the following nbs players has the most championship ring?
+*Michael Jordan
+Tony Parker
+Koby Bryant
+Lebron James
+?What is the age limit for olimpic games?
+14
+15
+*16
+17
+?Which of the following teams didnt win the european football championship?
+Czech Republic
+*Belgium
+Greece
+Denmark
+?How many round points in the center of the dart board?
+25
+40
+*50
+65
+?Who is the 2016 world chess champion?
+Sergey Karjakin
+Judit Polgar
+Gari Kasparov
+*Magnus Carlsen
+?Which country is hosting the most recent world championship of league of legends ,one of the most popular games of e-sports,which has been developing in recent years?
+*United States
+South Korea
+France
+Germany
+?How long is the length of the voleyball files?
+7,25
+8,5
+*9,5
+10,25
+?Which of the following nba pairs have played together for the longest?
+Michael jordan--scottie Pippen
+*John stockton--karl Malone
+Stephen curry --klay Thompson
+Shaquille o'neal-- koby Bryant
+?What is the special name of ice hockey ball?
+Disk
+Balk
+*Pak
+Cur

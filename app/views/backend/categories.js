@@ -119,8 +119,7 @@ export default class Categories extends React.Component{
                 <tr>
                     <th width='0'>#</th>
                     <th>Name</th>
-                    <th width='0'/>
-                    <th width='0'/>
+                    <th width='0' colSpan='2'>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -133,9 +132,8 @@ export default class Categories extends React.Component{
                                     category.name = e.target.value;
                                     this.setState({edited: category});
                                 }}/></td>
-                                <td width='1'><Button bsStyle="success" onClick={this.onEdit}>Save</Button>
-                                </td>
-                                <td width='1'><Button bsStyle="danger" onClick={this.onDelete.bind(this, category)}>Delete</Button></td>
+                                <td width='1'><Button bsStyle="link" onClick={this.onEdit}>Save</Button></td>
+                                <td width='1'><Button bsStyle="link" onClick={this.onDelete.bind(this, category)}>Delete</Button></td>
                             </tr>
                         )
                     } else {

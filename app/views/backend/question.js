@@ -220,7 +220,7 @@ export default class Questions extends React.Component {
                     <th width='0'>#</th>
                     <th colSpan='3'>Text</th>
                     <th>Category</th>
-                    <th width='0' colSpan="2"/>
+                    <th width='0' colSpan='2'>Actions</th>
                 </tr>
                 </thead>
                 <tbody>

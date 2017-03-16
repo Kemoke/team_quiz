@@ -54,6 +54,18 @@ switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
         $table = $_GET['table'];
 
+        if($table == "quiz"){
+            $data = $db->select('categories', '*');
+            for ($i = 0; $i < count($data); $i++){
+                $data[$i]['questions'] = $db->select('questions', '*', ['category_id' => $data[$i]['id']]);
+                for ($j = 0; $j < count($data[$i]['questions']); $j++){
+                    $data[$i]['questions'][$j]['answers'] = $db->select('answers', '*', ['question_id' => $data[$i]['questions'][$j]['id']]);
+                }
+            }
+            echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
+            return;
+        }
+
         if($table == "questions") {
             if(isset($_GET['catid'])){
                 $data = $db->select('questions', '*', ['category_id' => $_GET['catid']]);
