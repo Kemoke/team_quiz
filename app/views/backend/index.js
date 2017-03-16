@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 import {browserHistory} from 'react-router';
+import style from './styles.sass';
 
 export default class Backend extends React.Component{
 
@@ -15,9 +16,10 @@ export default class Backend extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className={style.body}>
                 <Navbar fixedTop={true}>
                     <Nav>
+                        <NavItem onClick={this.onNavigationClick.bind(this, '/')}>Main</NavItem>
                         <NavItem onClick={this.onNavigationClick.bind(this, '/backend/category')}>Categories</NavItem>
                         <NavItem onClick={this.onNavigationClick.bind(this, '/backend/question')}>Questions</NavItem>
                     </Nav>

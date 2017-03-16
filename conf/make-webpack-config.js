@@ -40,6 +40,9 @@ module.exports = function (options) {
         },
         devServer: {
             historyApiFallback: true,
+            watchOptions: {
+                poll: 1000
+            }
         },
         module: {
             preLoaders: options.lint ? [

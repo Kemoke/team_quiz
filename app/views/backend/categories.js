@@ -112,6 +112,7 @@ export default class Categories extends React.Component{
     }
 
     render(){
+        let num = 1;
         return(
             <Table striped bordered condensed hover>
                 <thead>
@@ -140,21 +141,21 @@ export default class Categories extends React.Component{
                     } else {
                         return(
                             <tr key={category.id}>
-                                <td width='1'>{category.id}</td>
-                                <td>{category.name}</td>
-                                <td width='1'><Button bsStyle="success" onClick={() => {
+                                <td width='1' style={{padding: '11px'}}>{category.id}</td>
+                                <td style={{padding: '11px'}}>{category.name}</td>
+                                <td width='1'><Button bsStyle="link" onClick={() => {
                                     category.isEdit = true;
                                     this.setState({edited: category});
                                 }}>Edit</Button>
                                 </td>
-                                <td width='1'><Button bsStyle="danger" onClick={this.onDelete.bind(this, category)}>Delete</Button></td>
+                                <td width='1'><Button bsStyle="link" onClick={this.onDelete.bind(this, category)}>Delete</Button></td>
                             </tr>
                         )
                     }
 
                 })}
                 <tr>
-                    <td/>
+                    <td style={{padding: '11px'}}>New</td>
                     <td>
                         <FormControl
                             placeholder="Category Name"
@@ -163,10 +164,9 @@ export default class Categories extends React.Component{
                             onChange={(e) => {this.setState({newName: e.target.value})}}
                         />
                     </td>
-                    <td width='1'>
-                        <Button onClick={this.onAdd} bsStyle="success">Save</Button>
+                    <td width='1' colSpan='2' style={{textAlign: 'center'}}>
+                        <Button onClick={this.onAdd} bsStyle="link">Save</Button>
                     </td>
-                    <td width='1'/>
                 </tr>
                 </tbody>
             </Table>

@@ -62,20 +62,34 @@ export default class Questions extends React.Component {
     }
 
     onLoadCategories(data) {
+        let newQ = this.state.newQuestion;
+        newQ.category_id = data[0].id;
         this.setState({
-            categories: data
+            categories: data,
+            newQuestion: newQ
         })
     }
 
     onEdit() {
+        let answers = this.state.edited.answers;
+        for (let i = 0; i < answers.length; i++){
+            answers[i].correct = 0;
+        }
+        for (let i = 0; i < answers.length; i++){
+            if(answers[i].text[0] === '*') {
+                answers[i].correct = 1;
+                answers[i].text = answers[i].text.slice(1, answers[i].text.length);
+                break;
+            }
+        }
         $.ajax({
             contentType: 'application/json',
             data: JSON.stringify({
-                table: 'categories',
+                table: 'questions',
                 operation: 'edit',
                 id: this.state.edited.id,
                 text: this.state.edited.text,
-                answers: this.state.edited.answers,
+                answers: answers,
                 category_id: this.state.edited.category_id
             }),
             dataType: 'json',
@@ -127,13 +141,21 @@ export default class Questions extends React.Component {
     }
 
     onAdd() {
+        let answers = this.state.newQuestion.answers;
+        for (let i = 0; i < answers.length; i++){
+            if(answers[i].text[0] === '*') {
+                answers[i].correct = 1;
+                answers[i].text = answers[i].text.slice(1, answers[i].text.length);
+                break;
+            }
+        }
         $.ajax({
             contentType: 'application/json',
             data: JSON.stringify({
                 table: 'questions',
                 operation: 'add',
                 text: this.state.newQuestion.text,
-                answers: this.state.newQuestion.answers,
+                answers: answers,
                 category_id: this.state.newQuestion.category_id
             }),
             dataType: 'json',
@@ -190,15 +212,15 @@ export default class Questions extends React.Component {
     }
 
     render() {
+        let num = 1;
         return (
-            <Table striped bordered condensed hover>
+            <Table striped bordered condensed>
                 <thead>
                 <tr>
                     <th width='0'>#</th>
-                    <th>Text</th>
+                    <th colSpan='3'>Text</th>
                     <th>Category</th>
-                    <th width='0'/>
-                    <th width='0'/>
+                    <th width='0' colSpan="2"/>
                 </tr>
                 </thead>
                 <tbody>
@@ -208,8 +230,8 @@ export default class Questions extends React.Component {
                     if (isEdit(question)) {
                         qHTML = (
                             <tr key={question.id}>
-                                <td width='1'>{question.id}</td>
-                                <td><FormControl value={question.text} onChange={(e) => {
+                                <td width='1' style={{padding: '11px'}}>{num++}</td>
+                                <td colSpan='3'><FormControl value={question.text} onChange={(e) => {
                                     question.text = e.target.value;
                                     this.setState({edited: question});
                                 }}/></td>
@@ -228,53 +250,66 @@ export default class Questions extends React.Component {
                                         )
                                     })}
                                 </select></td>
-                                <td width='1'><Button bsStyle="success" onClick={this.onEdit}>Save</Button>
+                                <td width='1' rowSpan='2' style={{verticalAlign: 'middle'}}><Button bsStyle="link" onClick={this.onEdit}>Save</Button>
                                 </td>
-                                <td width='1'><Button bsStyle="danger" onClick={this.onDelete.bind(this, question)}>Delete</Button>
+                                <td width='1' rowSpan='2' style={{verticalAlign: 'middle'}}><Button bsStyle="link" onClick={this.onDelete.bind(this, question)}>Delete</Button>
                                 </td>
                             </tr>);
                         aHTML = (
-                            <tr>
-                                <td>Answers</td>
+                            <tr style={{borderBottom: '1px black solid'}}>
+                                <td style={{padding: '11px'}}>Answers</td>
                                 {question.answers.map((answer) => {
                                     return (
-                                        <td key={answer.id}><FormControl value={answer.text} onChange={e => {
-                                            answer.text = e.target.value;
-                                            this.setState({edited: question});
-                                        }}/></td>
+                                        <td key={answer.id}>
+                                            <FormControl value={answer.text} onChange={e => {
+                                                answer.text = e.target.value;
+                                                this.setState({edited: question});
+                                            }}/>
+                                        </td>
                                     )
                                 })}
                             </tr>);
                     } else {
                         qHTML = (
                             <tr key={question.id}>
-                                <td width='1'>{question.id}</td>
-                                <td>{question.text}</td>
-                                <td>{question.category.name}</td>
-                                <td width='1'><Button bsStyle="success" onClick={() => {
+                                <td width='1' style={{padding: '11px'}}>{num++}</td>
+                                <td colSpan='3' style={{padding: '11px'}}>{question.text}</td>
+                                <td style={{padding: '11px'}}>{question.category.name}</td>
+                                <td width='1' rowSpan="2" style={{verticalAlign: 'middle'}}><Button bsStyle="link" onClick={() => {
                                     question.isEdit = true;
+                                    for (let i = 0; i < question.answers.length; i++){
+                                        if(question.answers[i].correct === 1){
+                                            question.answers[i].text = '*'+question.answers[i].text;
+                                        }
+                                    }
                                     this.setState({edited: question});
                                 }}>Edit</Button>
                                 </td>
-                                <td width='1'><Button bsStyle="danger" onClick={this.onDelete.bind(this, question)}>Delete</Button>
+                                <td width='1' rowSpan='2' style={{verticalAlign: 'middle'}}><Button bsStyle="link" onClick={this.onDelete.bind(this, question)}>Delete</Button>
                                 </td>
                             </tr>);
                         aHTML = (
-                            <tr style={{borderBottom: '2px black solid'}}>
-                                <td>Answers</td>
+                            <tr>
+                                <td style={{padding: '11px'}}>Answers</td>
                                 {question.answers.map((answer) => {
                                     return (
-                                        <td key={answer.id}>{answer.text}</td>
+                                        <td key={answer.id} style={answer.correct === 1 ?
+                                            {
+                                                fontWeight: 'bold',
+                                                padding: '11px',
+                                            } :
+                                            {
+                                                padding: '11px',
+                                            }}>{answer.text}</td>
                                     )
                                 })}
                             </tr>);
                     }
                     return [qHTML, aHTML];
                 })}
-                <tr/>
                 <tr>
-                    <td/>
-                    <td>
+                    <td style={{padding: '11px'}}>New</td>
+                    <td colSpan='3'>
                         <FormControl
                             placeholder="Question text"
                             value={this.state.newQuestion.text}
@@ -302,20 +337,21 @@ export default class Questions extends React.Component {
                             })}
                         </select>
                     </td>
-                    <td width='1'>
-                        <Button onClick={this.onAdd} bsStyle="success">Save</Button>
+                    <td width='1' style={{verticalAlign: 'middle', textAlign: 'center'}} colSpan='2' rowSpan='2'>
+                        <Button onClick={this.onAdd} bsStyle="link">Save</Button>
                     </td>
-                    <td width='1'/>
                 </tr>
                 <tr>
-                    <td>Answers</td>
+                    <td style={{padding: '11px'}}>Answers</td>
                     {this.state.newQuestion.answers.map((answer) => {
                         return (
-                            <td width='1000' key={answer.id}><FormControl value={answer.text} onChange={e => {
-                                let newQ = this.state.newQuestion;
-                                answer.text = e.target.value;
-                                this.setState({newQuestion: newQ});
-                            }}/></td>
+                            <td width='1000' key={answer.id}>
+                                <FormControl value={answer.text} onChange={e => {
+                                    let newQ = this.state.newQuestion;
+                                    answer.text = e.target.value;
+                                    this.setState({newQuestion: newQ});
+                                }}/>
+                            </td>
                         )
                     })}
                 </tr>

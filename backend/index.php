@@ -53,15 +53,20 @@ switch ($_SERVER['REQUEST_METHOD']){
         break;
     case 'GET':
         $table = $_GET['table'];
+
         if($table == "questions") {
-            $data = $db->select('questions', '*');
+            if(isset($_GET['catid'])){
+                $data = $db->select('questions', '*', ['category_id' => $_GET['catid']]);
+            } else {
+                $data = $db->select('questions', '*');
+            }
             for ($i = 0; $i < sizeof($data); $i++) {
                 $data[$i]['answers'] = $db->select('answers', '*', ['question_id' => $data[$i]['id']]);
                 $data[$i]['category'] = $db->select('categories', '*', ['id' => $data[$i]['category_id']])[0];
             }
-            echo json_encode($data);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
         } else {
             $data = $db->select($table, '*');
-            echo json_encode($data);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK);
         }
 }
