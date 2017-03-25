@@ -87,6 +87,10 @@ module.exports = function (options) {
                     loader: 'url?limit=100000&mimetype=image/gif',
                 },
                 {
+                    test: /\.mp3$/,
+                    loader: 'url'
+                },
+                {
                     test: /\.jpg$/,
                     loader: 'file',
                 },

@@ -1,11 +1,15 @@
 <?php
+ini_set('max_execution_time', 300);
 require_once 'db.php';
 $file = fopen('questions.txt', 'r');
 $questions = [];
 $category = 0;
 while($line = trim(fgets($file))){
-    while($line[0] != '?') {
-        $category = $line;
+    if($line[0] != '?') {
+        if(strpos($line, '39') != false)
+            $category = 39;
+        else
+            $category = $line;
         $line = trim(fgets($file));
     }
     $question = [];

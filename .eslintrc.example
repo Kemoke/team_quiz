@@ -8,7 +8,7 @@
   "extends": ["standard", "standard-react", "standard-jsx"],
   "parser": "babel-eslint",
   "rules": {
-    "strict": 0,
+    "strict": 1,
     "comma-dangle": [2, "always-multiline"],
     "jsx-quotes": [2, "prefer-double"],
     "no-multi-spaces": 0,
