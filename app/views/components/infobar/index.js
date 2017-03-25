@@ -10,7 +10,11 @@ export default class InfoBar extends React.Component {
                     Round {this.props.round}
                 </div>
                 <div className={style.timer}>
-                    00:{this.props.timer < 10 ? '0' : ''}{this.props.timer}
+                    {
+                        this.props.categoryName === 'Final' ?
+                            '' :
+                            '00:' + this.props.timer < 10 ? '0' : '' + this.props.timer
+                    }
                 </div>
                 <div className={style.categoryinfo}>
                     {this.props.categoryName}

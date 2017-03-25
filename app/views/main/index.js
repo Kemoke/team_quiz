@@ -33,7 +33,8 @@ export default class Main extends React.Component {
                 currentCategory: null,
                 timerActive: false,
                 overtime: false,
-                final: false
+                final: false,
+                publika: false
             },
             correct: false,
             overlay: false,
@@ -70,23 +71,24 @@ export default class Main extends React.Component {
         this.loadOvertimeCategory = this.loadOvertimeCategory.bind(this);
         this.overtime = this.overtime.bind(this);
         this.final = this.final.bind(this);
+        this.publika = this.publika.bind(this);
     }
 
-    loadOvertimeCategory(){
+    loadOvertimeCategory() {
         let overtime = {
             name: 'Overtime',
             questions: []
         };
         this.state.categories.forEach(category => {
             category.questions.forEach(question => {
-                if(!question.used)
+                if (!question.used)
                     overtime.questions.push(question);
             });
         });
         return overtime;
     }
 
-    overtime(state){
+    overtime(state) {
         let overtimeCat = this.loadOvertimeCategory();
         let quizState = state.quizState;
         quizState.overtime = true;
@@ -98,7 +100,7 @@ export default class Main extends React.Component {
         });
     }
 
-    final(state){
+    final(state) {
         let quizState = state.quizState;
         quizState.round = 0;
         quizState.overtime = false;
@@ -106,6 +108,148 @@ export default class Main extends React.Component {
         quizState.currentCategory = this.finalCategory;
         quizState.teams[0].score = 0;
         quizState.teams[1].score = 0;
+        this.setState({
+            quizState: quizState,
+            categories: []
+        });
+    }
+
+    publika() {
+        let quizState = this.state.quizState;
+        let publikaCategory = {
+            name: 'Trivia',
+            questions: [
+                {
+                    text: 'Who will call the students "habibi" in dormitory?',
+                    answers:[
+                        {
+                            text: 'Sefik',
+                            correct: 0
+                        },
+                        {
+                            text: 'Suad',
+                            correct: 0
+                        },
+                        {
+                            text: 'Elvir',
+                            correct: 1
+                        },
+                        {
+                            text: 'Fikret',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'Why is it forbidden to smoke cigarette right in front of main entrance in our clean-smell beautiful dormitory?',
+                    answers:[
+                        {
+                            text: 'Moods (Gıcıklık)',
+                            correct: 0
+                        },
+                        {
+                            text: 'Just to have something forbidden',
+                            correct: 0
+                        },
+                        {
+                            text: 'Make life harsh for students',
+                            correct: 0
+                        },
+                        {
+                            text: 'Smoke goes through inside',
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    text: 'Luggage or valise must be ...',
+                    answers:[
+                        {
+                            text: 'Above my head',
+                            correct: 0
+                        },
+                        {
+                            text: 'With me while I sleep',
+                            correct: 0
+                        },
+                        {
+                            text: 'In a place that scratch the wall',
+                            correct: 0
+                        },
+                        {
+                            text: 'In its proper place which is luggage room',
+                            correct: 1
+                        }
+                    ]
+                },
+                {
+                    text: 'What do you feel when you see green area full of cigarette butt?',
+                    answers:[
+                        {
+                            text: 'Proud',
+                            correct: 0
+                        },
+                        {
+                            text: 'Happy',
+                            correct: 0
+                        },
+                        {
+                            text: 'Want to clean if administration gives glove',
+                            correct: 1
+                        },
+                        {
+                            text: 'Nothing',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'Monday topic was',
+                    answers:[
+                        {
+                            text: 'How you using body language well',
+                            correct: 1
+                        },
+                        {
+                            text: 'How you write essay well ',
+                            correct: 0
+                        },
+                        {
+                            text: 'How you write Turkish poem well ',
+                            correct: 1
+                        },
+                        {
+                            text: 'Glib tongue and how you speak Turkish language well',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'First floor full name?',
+                    answers:[
+                        {
+                            text: 'Ajşa Cavusevic',
+                            correct: 0
+                        },
+                        {
+                            text: 'Anela Avdić',
+                            correct: 0
+                        },
+                        {
+                            text: 'Aida Agic',
+                            correct: 1
+                        },
+                        {
+                            text: 'Anela Mujic',
+                            correct: 0
+                        }
+                    ]
+                },
+            ]
+        };
+        quizState.round = 0;
+        quizState.overtime = false;
+        quizState.currentCategory = publikaCategory;
         this.setState({
             quizState: quizState,
             categories: []
@@ -141,22 +285,26 @@ export default class Main extends React.Component {
     }
 
     startTimer() {
-        this.timerID = setInterval(this.timerTick, 1000);
-        let quizState = this.state.quizState;
-        quizState.timerActive = true;
-        this.setState({
-            quizState: quizState
-        });
+        if(!this.state.quizState.final) {
+            this.timerID = setInterval(this.timerTick, 1000);
+            let quizState = this.state.quizState;
+            quizState.timerActive = true;
+            this.setState({
+                quizState: quizState
+            });
+        }
     }
 
     stopTimer() {
-        clearInterval(this.timerID);
-        let quizState = this.state.quizState;
-        quizState.timerActive = false;
-        this.setState({
-            timer: 30,
-            quizState: quizState
-        });
+        if(!this.state.quizState.final){
+            clearInterval(this.timerID);
+            let quizState = this.state.quizState;
+            quizState.timerActive = false;
+            this.setState({
+                timer: 30,
+                quizState: quizState
+            });
+        }
     }
 
     componentWillMount() {
@@ -172,12 +320,17 @@ export default class Main extends React.Component {
             case 13:
                 console.log("bee");
                 if (this.newState !== null) {
-                    if(this.newState.quizState.teams.length > 2){
-                        if(!this.state.quizState.overtime)
+                    if (this.newState.quizState.teams.length > 2) {
+                        if (!this.state.quizState.overtime)
                             this.overtime(this.newState);
                     } else {
-                        if(!this.state.quizState.final)
-                            this.final(this.newState);
+                        if (!this.state.quizState.publika) {
+                            if (!this.state.quizState.final)
+                                this.final(this.newState);
+                        } else {
+                            this.publika();
+                        }
+
                     }
                 }
         }
@@ -241,8 +394,12 @@ export default class Main extends React.Component {
                 quizState: quizState,
             });
             if (answer.correct === 1) {
-                this.appendHistory('answer', round % this.state.quizState.teams.length);
-                quizState.teams[round % this.state.quizState.teams.length].score++;
+                if(!this.state.quizState.publika) {
+                    this.appendHistory('answer', round % this.state.quizState.teams.length);
+                    quizState.teams[round % this.state.quizState.teams.length].score++;
+                } else {
+                    this.appendHistory('answer', null);
+                }
                 this.onCorrect();
             } else {
                 this.appendHistory('answer', null);
@@ -284,7 +441,7 @@ export default class Main extends React.Component {
             if (teams.length < 2) {
                 teams.push(stateTeams[i]);
             } else {
-                if (teams[i-1].score > stateTeams[i].score) {
+                if (teams[i - 1].score > stateTeams[i].score) {
                     break;
                 } else {
                     teams.push(stateTeams[i]);
@@ -309,9 +466,13 @@ export default class Main extends React.Component {
                         overlay: false,
                         answer: -1
                     });
-                    this.newState = $.extend(true,{},this.state);
-                    this.newState.quizState = $.extend(true,{},quizState);
+                    this.newState = $.extend(true, {}, this.state);
+                    this.newState.quizState = $.extend(true, {}, quizState);
                     this.newState.quizState.teams = teams;
+                    quizState.publika = true;
+                    this.setState({
+                        quizState: quizState
+                    })
                 } else {
                     quizState.teams = teams;
                     this.setState({
@@ -327,10 +488,10 @@ export default class Main extends React.Component {
                     answer: -1
                 });
             }
-        } else if(quizState.final){
+        } else if (quizState.final) {
             const divisor = quizState.round > 20 ? 2 : 20;
-            if(quizState.round % divisor === 0){
-                if(quizState.teams[0].score > quizState.teams[1].score){
+            if (quizState.round % divisor === 0) {
+                if (quizState.teams[0].score > quizState.teams[1].score) {
                     this.setState({
                         winner: quizState.teams[0]
                     });
@@ -352,6 +513,15 @@ export default class Main extends React.Component {
                     answer: -1
                 });
             }
+        } else if (this.state.quizState.publika){
+            if(this.state.quizState.round % this.state.quizState.currentCategory.questions.length === 0){
+                quizState.publika = false;
+            }
+            this.setState({
+                overlay: false,
+                quizState: quizState,
+                answer: -1
+            });
         } else {
             if (quizState.round % 12 === 0)
                 quizState.currentCategory = null;
@@ -359,9 +529,11 @@ export default class Main extends React.Component {
                 this.newState = $.extend(true, {}, this.state);
                 this.newState.quizState = $.extend(true, {}, quizState);
                 this.newState.quizState.teams = this.getTeams();
+                quizState.publika = true;
                 this.setState({
                     overlay: false,
-                    answer: -1
+                    answer: -1,
+                    quizState: quizState
                 });
             } else {
                 this.setState({
@@ -411,6 +583,8 @@ export default class Main extends React.Component {
         const displayRound = this.state.quizState.final ?
             this.state.quizState.round + 1 :
             this.state.quizState.round === -1 ? 0 : ((this.state.quizState.round % teamSize) + 1);
+        const displayTeams = this.state.quizState.currentCategory === null ? this.state.quizState.teams :
+            this.state.quizState.currentCategory.name === 'Trivia' ? [] : this.state.quizState.teams;
         return (
             <div>
                 <div className={style.infobg}> </div>
@@ -481,7 +655,8 @@ export default class Main extends React.Component {
                                             this.state.overlay && this.state.answer === ans && !answer.correct ? style.incorrect : null
                                         ])}
                                     >
-                                        <span>{letters[ans]}<div className={style.diamond}> </div></span>
+                                        <span>{letters[ans]}
+                                            <div className={style.diamond}> </div></span>
                                         <a onClick={this.onAnswer.bind(this, answer, ans++)}>{answer.text}</a>
                                     </li>
                                 )
@@ -499,14 +674,15 @@ export default class Main extends React.Component {
                          }/>
                 <div className={s([style.sidebar, style.teams])}>
                     <ul>
-                        {this.state.quizState.teams.map(team => {
+                        {displayTeams.map(team => {
                             return (
                                 <li key={team.id}
                                     className={
                                         this.state.quizState.round % this.state.quizState.teams.length === teamNo++ ?
                                             style.active : ''
                                     }>
-                                    <a>{team.name}</a><span className={style.score}>{team.score}</span></li>
+                                    <a>{team.name}</a><span className={style.score}>{team.score}</span>
+                                </li>
                             )
                         })}
                     </ul>
