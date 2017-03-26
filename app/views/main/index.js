@@ -216,7 +216,7 @@ export default class Main extends React.Component {
                         },
                         {
                             text: 'How you write Turkish poem well ',
-                            correct: 1
+                            correct: 0
                         },
                         {
                             text: 'Glib tongue and how you speak Turkish language well',
@@ -241,6 +241,90 @@ export default class Main extends React.Component {
                         },
                         {
                             text: 'Anela Mujic',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'What is the number of rooms for the accommodation of students in dormitory Plavi Leptir?',
+                    answers:[
+                        {
+                            text: '48',
+                            correct: 0
+                        },
+                        {
+                            text: '52',
+                            correct: 0
+                        },
+                        {
+                            text: '56',
+                            correct: 1
+                        },
+                        {
+                            text: '60',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'What is the name of person/company that made Quiz application',
+                    answers:[
+                        {
+                            text: 'Ibrahim Bali',
+                            correct: 0
+                        },
+                        {
+                            text: 'Logosoft',
+                            correct: 0
+                        },
+                        {
+                            text: 'Kemal Hrelja',
+                            correct: 1
+                        },
+                        {
+                            text: 'Taha Yilmaz',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'In which days you can eat pie (cheese, potatoes, meat) for breakfast',
+                    answers:[
+                        {
+                            text: 'Monday and friday',
+                            correct: 0
+                        },
+                        {
+                            text: 'Tuesday and saturday',
+                            correct: 0
+                        },
+                        {
+                            text: 'Wednesday and saturday',
+                            correct: 1
+                        },
+                        {
+                            text: 'Monday and wednesday',
+                            correct: 0
+                        }
+                    ]
+                },
+                {
+                    text: 'What was the team name that last year won the Quiz in Plavi Leptir',
+                    answers:[
+                        {
+                            text: 'Palesafrica',
+                            correct: 0
+                        },
+                        {
+                            text: 'Architects',
+                            correct: 0
+                        },
+                        {
+                            text: 'Africa',
+                            correct: 1
+                        },
+                        {
+                            text: 'Balkans',
                             correct: 0
                         }
                     ]
