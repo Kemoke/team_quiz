@@ -47,7 +47,7 @@ export default class Main extends React.Component {
         this.state = {
             categories: [],
             quizState: {
-                round: 71,
+                round: -1,
                 teams: [],
                 currentQuestion: null,
                 currentCategory: null,
@@ -368,8 +368,6 @@ export default class Main extends React.Component {
             team.score = 0;
             return team;
         });
-        data[0].score = 5;
-        data[1].score = 5;
         quizState.teams = data;
         this.setState({
             quizState: quizState
