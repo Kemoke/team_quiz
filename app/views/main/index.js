@@ -9,6 +9,7 @@ import $ from 'jquery';
 import InfoBar from '../components/infobar'
 
 const ESCAPE = 27;
+const ENTER = 13;
 
 function s(styles) {
     let styleString = '';
@@ -20,6 +21,25 @@ function s(styles) {
     return styleString;
 }
 
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
 export default class Main extends React.Component {
 
     constructor() {
@@ -27,7 +47,7 @@ export default class Main extends React.Component {
         this.state = {
             categories: [],
             quizState: {
-                round: -1,
+                round: 71,
                 teams: [],
                 currentQuestion: null,
                 currentCategory: null,
@@ -43,6 +63,7 @@ export default class Main extends React.Component {
             answer: -1,
             winner: null
         };
+        this.finalists = [];
         this.clicked = false;
         this.newState = null;
         this.history = [];
@@ -85,6 +106,7 @@ export default class Main extends React.Component {
                     overtime.questions.push(question);
             });
         });
+        overtime.questions = shuffle(overtime.questions);
         return overtime;
     }
 
@@ -346,6 +368,8 @@ export default class Main extends React.Component {
             team.score = 0;
             return team;
         });
+        data[0].score = 5;
+        data[1].score = 5;
         quizState.teams = data;
         this.setState({
             quizState: quizState
@@ -398,13 +422,11 @@ export default class Main extends React.Component {
     onKeyPress(event) {
         switch (event.keyCode) {
             case ESCAPE:
-                console.log("a");
                 this.undo();
                 break;
-            case 13:
-                console.log("bee");
+            case ENTER:
                 if (this.newState !== null) {
-                    if (this.newState.quizState.teams.length > 2) {
+                    if (this.newState.quizState.teams.length > 1 && this.finalists.length < 2) {
                         if (!this.state.quizState.overtime)
                             this.overtime(this.newState);
                     } else {
@@ -414,7 +436,6 @@ export default class Main extends React.Component {
                         } else {
                             this.publika();
                         }
-
                     }
                 }
         }
@@ -426,6 +447,7 @@ export default class Main extends React.Component {
             return data;
         });
         this.finalCategory = data[data.length - 1];
+        this.finalCategory.questions = shuffle(this.finalCategory.questions);
         data.splice(data.length - 1, 1);
         this.setState({
             categories: data
@@ -522,7 +544,7 @@ export default class Main extends React.Component {
             return team2.score - team1.score;
         });
         for (let i = 0; i < stateTeams.length; i++) {
-            if (teams.length < 2) {
+            if (i === 0 || (i === 1 && !this.state.quizState.overtime)) {
                 teams.push(stateTeams[i]);
             } else {
                 if (teams[i - 1].score > stateTeams[i].score) {
@@ -545,7 +567,20 @@ export default class Main extends React.Component {
             const divisor = this.state.round > 2 * teams ? teams : 2 * teams;
             if (quizState.round % divisor === 0) {
                 let teams = this.getTeams();
-                if (teams.length === 2) {
+                if (teams.length === 1) {
+                    this.setState({
+                        overlay: false,
+                        answer: -1
+                    });
+                    this.newState = $.extend(true, {}, this.state);
+                    this.newState.quizState = $.extend(true, {}, quizState);
+                    this.finalists.push(teams[0]);
+                    this.newState.quizState.teams = this.finalists;
+                    quizState.publika = true;
+                    this.setState({
+                        quizState: quizState
+                    })
+                } else if (teams.length === 2 && this.finalists.length === 0) {
                     this.setState({
                         overlay: false,
                         answer: -1
@@ -612,7 +647,14 @@ export default class Main extends React.Component {
             if (quizState.round / 12 >= 6) {
                 this.newState = $.extend(true, {}, this.state);
                 this.newState.quizState = $.extend(true, {}, quizState);
-                this.newState.quizState.teams = this.getTeams();
+                let teams = this.getTeams();
+                if(teams.length === 2){
+                    this.finalists = teams;
+                } else if(teams[0].score > teams[1].score) {
+                    this.finalists.push(teams[0]);
+                    teams.splice(0, 1);
+                }
+                this.newState.quizState.teams = teams;
                 quizState.publika = true;
                 this.setState({
                     overlay: false,
