@@ -142,7 +142,7 @@ export default class Main extends React.Component {
             name: 'Trivia',
             questions: [
                 {
-                    text: 'Who will call the students "habibi" in dormitory?',
+                    text: 'Whom will students in dormitory call "Habibi"?',
                     answers:[
                         {
                             text: 'Sefik',
@@ -178,7 +178,7 @@ export default class Main extends React.Component {
                             correct: 0
                         },
                         {
-                            text: 'Smoke goes through inside',
+                            text: 'Smoke goes inside through the doors',
                             correct: 1
                         }
                     ]
@@ -205,7 +205,7 @@ export default class Main extends React.Component {
                     ]
                 },
                 {
-                    text: 'What do you feel when you see green area full of cigarette butt?',
+                    text: 'What do you feel when you see green area full of cigarette-butts?',
                     answers:[
                         {
                             text: 'Proud',
@@ -216,7 +216,7 @@ export default class Main extends React.Component {
                             correct: 0
                         },
                         {
-                            text: 'Want to clean if administration gives glove',
+                            text: 'I want to clean it if administration gives gloves',
                             correct: 1
                         },
                         {
@@ -331,7 +331,7 @@ export default class Main extends React.Component {
                     ]
                 },
                 {
-                    text: 'What was the team name that last year won the Quiz in Plavi Leptir',
+                    text: 'What was the name of the team that won the Quiz in Plavi Leptir last year?',
                     answers:[
                         {
                             text: 'Palesafrica',
