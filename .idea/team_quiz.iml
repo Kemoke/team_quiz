@@ -7,16 +7,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="PHARS">
-        <CLASSES>
-          <root url="phar://$MODULE_DIR$/composer.phar/" />
-        </CLASSES>
-        <SOURCES>
-          <root url="phar://$MODULE_DIR$/composer.phar/" />
-        </SOURCES>
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="css-modules-require-hook-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="webpack-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="jquery-DefinitelyTyped" level="application" />
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
@@ -29,8 +22,5 @@
         </SOURCES>
       </library>
     </orderEntry>
-    <orderEntry type="library" name="css-modules-require-hook-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="webpack-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="jquery-DefinitelyTyped" level="application" />
   </component>
 </module>

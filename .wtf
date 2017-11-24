@@ -8,13 +8,15 @@
   "extends": ["standard", "standard-react", "standard-jsx"],
   "parser": "babel-eslint",
   "rules": {
+    "indent": "off",
     "strict": 1,
     "comma-dangle": [2, "always-multiline"],
+    "curly": "off",
     "jsx-quotes": [2, "prefer-double"],
     "no-multi-spaces": 0,
     "no-underscore-dangle": 0,
     "quotes": [2, "single"],
-    "semi": [2, "always"],
+    "semi": "off",
     "space-before-function-paren": [2, "never"]
   },
   "globals": {

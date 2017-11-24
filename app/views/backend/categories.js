@@ -20,7 +20,7 @@ export default class Categories extends React.Component{
         this.onLoad = this.onLoad.bind(this);
         this.onDelete = this.onDelete.bind(this);
         this.onEdit = this.onEdit.bind(this);
-        $.get('http://localhost/?table=categories', this.onLoad);
+        $.get('http://quiz.loc/?table=categories', this.onLoad);
     }
 
     onLoad(data){
@@ -55,7 +55,7 @@ export default class Categories extends React.Component{
                 console.log(error);
             }.bind(this),
             type: 'POST',
-            url: 'http://localhost/'
+            url: 'http://quiz.loc/'
         })
     }
 
@@ -82,7 +82,7 @@ export default class Categories extends React.Component{
                 console.log(error);
             }.bind(this),
             type: 'POST',
-            url: 'http://localhost/'
+            url: 'http://quiz.loc/'
         })
     }
     
@@ -107,7 +107,7 @@ export default class Categories extends React.Component{
                 });
             }.bind(this),
             type: 'POST',
-            url: 'http://localhost/'
+            url: 'http://quiz.loc/'
         });
     }
 

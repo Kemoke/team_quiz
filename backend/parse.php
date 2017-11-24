@@ -6,10 +6,8 @@ $questions = [];
 $category = 0;
 while($line = trim(fgets($file))){
     if($line[0] != '?') {
-        if(strpos($line, '39') != false)
-            $category = 39;
-        else
-            $category = $line;
+        $db->insert('categories', ['name' => $line]);
+        $category = $db->id();
         $line = trim(fgets($file));
     }
     $question = [];

@@ -39,11 +39,11 @@ switch ($_SERVER['REQUEST_METHOD']){
                     foreach ($answers as $answer){
                         $db->update('answers', $answer, ['id' => $answer['id']]);
                     }
+                    echo json_encode($answers);
                 } else {
                     $db->update($table, $data, ['id' => $data['id']]);
                     $id = $db->id();
                 }
-                echo $id;
                 break;
             case 'delete':
                 $db->delete($table, ['id' => $data['id']]);
