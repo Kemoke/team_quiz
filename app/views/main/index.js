@@ -683,7 +683,7 @@ export default class Main extends React.Component {
   }
 
   undo () {
-    if (this.history.length === 0)
+    if (this.history.length === 0 || this.state.answer !== -1)
       return
     let undoStep = this.history[this.history.length - 1]
     let quizState = undoStep.state
