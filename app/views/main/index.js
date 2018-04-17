@@ -73,8 +73,8 @@ export default class Main extends React.Component {
     this.timerID = 0
     this.finalCategory = {}
     this.bindFunctions()
-    $.get('http://quiz.loc/?table=quiz', this.onLoad)
-    $.get('http://quiz.loc/?table=teams', this.onLoadTeams)
+    $.get('http://localhost:8001/?table=quiz', this.onLoad)
+    $.get('http://localhost:8001/?table=teams', this.onLoadTeams)
   }
 
   bindFunctions () {

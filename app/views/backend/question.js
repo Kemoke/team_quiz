@@ -53,8 +53,8 @@ export default class Questions extends React.Component {
     this.onLoadCategories = this.onLoadCategories.bind(this)
     this.onDelete = this.onDelete.bind(this)
     this.onEdit = this.onEdit.bind(this)
-    $.get('http://quiz.loc/?table=questions', this.onLoadQuestion)
-    $.get('http://quiz.loc/?table=categories', this.onLoadCategories)
+    $.get('http://localhost:8001/?table=questions', this.onLoadQuestion)
+    $.get('http://localhost:8001/?table=categories', this.onLoadCategories)
   }
 
   onLoadQuestion (data) {
@@ -106,7 +106,7 @@ export default class Questions extends React.Component {
         console.log(error)
       }.bind(this),
       type: 'POST',
-      url: 'http://quiz.loc/'
+      url: 'http://localhost:8001/'
     })
   }
 
@@ -133,7 +133,7 @@ export default class Questions extends React.Component {
         console.log(error)
       }.bind(this),
       type: 'POST',
-      url: 'http://quiz.loc/'
+      url: 'http://localhost:8001/'
     })
   }
 
@@ -204,7 +204,7 @@ export default class Questions extends React.Component {
         })
       }.bind(this),
       type: 'POST',
-      url: 'http://quiz.loc/'
+      url: 'http://localhost:8001/'
     })
   }
 

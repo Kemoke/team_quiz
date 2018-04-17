@@ -65,7 +65,7 @@ body
 .maintop
   will-change: transform
   position: fixed
-  width: 1366px - ($sidebar-width * 3)
+  width: calc(100% - #{$sidebar-width * 3})
   height: 50vh
   top: 0
   transform: translateY(-50vh)
@@ -92,7 +92,7 @@ body
 .mainbottom
   will-change: transform
   position: fixed
-  width: 1366px - ($sidebar-width * 3)
+  width: calc(100% - #{$sidebar-width * 3})
   height: 33.33vh
   transform: translateY(16.67vh)
   bottom: -1px
@@ -179,7 +179,7 @@ body
 .infobar
   position: fixed
   height: 16.67vh
-  width: 1366px - ($sidebar-width * 3)
+  width: calc(100% - #{$sidebar-width * 3})
   bottom: 0
   left: $sidebar-width
   color: $font-color
